@@ -1,5 +1,5 @@
 <h4 align="center">🏆 2024 Techeer Winter BootCamp K team 🏆</h1>
-<h1 align="center">🎧 AILIBI 🎧</h1>
+<h1 align="center">🕵️ AILIBI 🕵️</h1>
 <div align="center"> 
 <h3><b> AI-based detective simulation game </b></h3><br>
 <img width="1503" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/main.png" alt="대표 이미지">
