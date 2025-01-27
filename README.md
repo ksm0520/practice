@@ -30,7 +30,7 @@
 > 🗝️ [AILIBI](https://AILIBI.click) 
 
 ### Medium
-> 🔎 [MVStudio Medium](https://medium.com) &nbsp;
+> 🔎 [AILIBI Medium](https://medium.com) &nbsp;
 
 <br>
 
