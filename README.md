@@ -1,4 +1,4 @@
-<h4 align="center">🏆 2024 Techeer Winter BootCamp K team 🏆</h1>
+<h4 align="center">📜 2024 Techeer Winter BootCamp K team 📜</h1>
 <h1 align="center">🕵️ AILIBI 🕵️</h1>
 <div align="center"> 
 <h3><b> AI-based detective simulation game </b></h3><br>
