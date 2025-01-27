@@ -188,6 +188,8 @@
       <td><b>AI</b></td>
       <td>
         <img src="https://img.shields.io/badge/OpenAI-74aa9c?style=for-the-badge&logo=openai&logoColor=white">
+        <img src="https://img.shields.io/badge/DALL·E-1192e8?style=for-the-badge&logo=openai&logoColor=white">
+      </td>
       </td>
     </tr>
     <tr>
