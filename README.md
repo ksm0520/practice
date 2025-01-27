@@ -1,10 +1,10 @@
-# 프로젝트 이름
+# AILIBI
 
 ![대표 이미지](https://via.placeholder.com/1200x600.png?text=%EB%8C%80%ED%91%9C+%EC%9D%B4%EB%AF%B8%EC%A7%80)
 
-## 📌 프로젝트 소개
+## 📣 Introduction
 
-이 프로젝트는 [프로젝트 주제]를 목적으로 진행된 [간단한 설명].
+AI+ALIBI(현재 부재 증명)= AILIBI
 
 ## 📝 블로그 포스팅
 
