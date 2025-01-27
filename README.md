@@ -2,7 +2,7 @@
 <h1 align="center">🎧 AILIBI 🎧</h1>
 <div align="center"> 
 <h3><b> AI-based detective simulation game </b></h3><br>
-<img width="1503" src="https://github.com/user-attachments/assets/6c1eda27-0075-4af3-989d-e2d0a24452c3">
+<img width="1503" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/main.png" alt="대표 이미지">
 <h3><b>AI+ALIBI(현재 부재 증명)= AILIBI</b></h3>
 
 <br>
