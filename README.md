@@ -1,9 +1,9 @@
-<h4 align="center">🏆 2024 Techeer Summer BootCamp 1st Place Award 🏆</h1>
-<h1 align="center">🎧 MVStudio 🎧</h1>
+<h4 align="center">🏆 2024 Techeer Winter BootCamp K team 🏆</h1>
+<h1 align="center">🎧 AILIBI 🎧</h1>
 <div align="center"> 
-<h3><b>Let's Create Music videos and Share them Together! </b></h3><br>
+<h3><b> AI-based detective simulation game </b></h3><br>
 <img width="1503" src="https://github.com/user-attachments/assets/6c1eda27-0075-4af3-989d-e2d0a24452c3">
-<h3><b>MVStudio를 통해 창의적인 아이디어를 실현해 보세요!</b></h3>
+<h3><b>AI+ALIBI(현재 부재 증명)= AILIBI</b></h3>
 
 <br>
 
