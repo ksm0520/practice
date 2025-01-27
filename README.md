@@ -46,14 +46,14 @@
 # 🕺🏻 Demo
 ### 로그인 페이지 및 시작 페이지
 > AILIBI 게임에 대한 간략한 설명을 담고 있습니다.
-<img align="center" width="1000" alt="Onboarding" src="https://github.com/2024-Techeer-Summer-Bootcamp-Team-D/.github/blob/main/images/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2024-08-03-%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB-2%20(2).gif">
-
+<img align="center" width="1000" alt="Onboarding" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/main.png">
+<img align="center" width="1000" alt="Onboarding" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/login.png">
 
 
 ### 메인 페이지
 > 현재까지 진행했던 히스토리 페이지 및 새로운 시나리오를 생성하는 시나리오 페이지로 이동이 가능합니다
 <br>
-<img align="center" width="1000" alt="Login & Sign up" src="https://github.com/user-attachments/assets/a80f83ab-90b0-41bb-8927-143d27dcda51">
+<img align="center" width="1000" alt="Login & Sign up" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/mainPage.png">
 
 <br>
 
@@ -61,7 +61,7 @@
 > 플레이어가 탐정 스토리의 주요 배경과 사건을 설정하는 페이지입니다..<br>
 > 사건의 종류,시간,장소 등을 선택할 수 있습니다.
 <br>
-<img align="center" width="1000" alt="Login & Sign up" src="https://github.com/2024-Techeer-Summer-Bootcamp-Team-D/.github/blob/main/images/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB%20%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8%202024-08-03%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%206%20(1).gif">
+<img align="center" width="1000" alt="Login & Sign up" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/make.png">
 
 <br>
 
@@ -69,7 +69,7 @@
 > 플레이어가 이전에 해결했던 사건들을 확인할 수 있는 기록 페이지입니다.<br>
 > 사건별 결과와 세부 정보를 조회할 수 있습니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/dc648d65-0ea9-4dc5-98e5-14f42ec4b256">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/history.png">
 
 <br>
 
@@ -77,15 +77,15 @@
 > 게임이 로드되는 동안 플레이어가 즐길 수 있는 간단한 미니게임이 포함된 페이지입니다.<br>
 > 대기 시간을 줄이고 몰입감을 높이는 역할을 합니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/7ec0a76d-8998-4913-89f7-72f8d6e0590c">
-
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/loading.png">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/minigame.png">
 <br>
 
 ### 플레이 페이지
 > 플레이어가 사건을 해결하며 진행하는 메인 게임 화면입니다.<br>
 > 증거를 조하고, 용의자를 심문하며 사건의 진실을 추적합니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/b3268116-9b7e-42fb-b01f-354d919f03ab">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/play.png">
 
 <br>
   
@@ -93,7 +93,7 @@
 > 주요 용의자들의 프로필, 알리바이, 행동 기록 등을 확인할 수 있는 페이지입니다.<br>
 > 발견된 증거를 정리하고 분석하여 사건 해결에 활용합니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/db9365d8-7e89-4de1-9886-d03406757de0">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/">
 
 <br>
 
@@ -101,7 +101,7 @@
 > AI 기반으로 용의자와 실시간으로 대화하며 단서를 수집하는 페이지입니다.<br>
 > TTS로 생성된 꿀보이스로 자유로운 대화가 가능합니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/ba0e7494-5eb5-41d6-bcf6-e5cb9e44b8b1">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/">
 
 <br>
 
@@ -109,7 +109,7 @@
 > 플레이어가 정리한 사건의 단서, 용의자 관계도, 메모 등을 빠르게 볼 수 있는 팝업입니다.<br>
 >추리를 위한 모든 정보를 한눈에 확인할 수 있습니다.
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/bb63268f-655f-4511-a618-81ec54150e05">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/">
 
 <br>
 
@@ -117,7 +117,7 @@
 > 사건이 해결된 이후의 페이지로, 사건의 전개와 해결 과정을 요약합니다.<br>
 > 플레이어의 선택에 따라 달라지는 결과 페이지와 크레딧 화면을 볼 수 있습니다
 <br>
-<img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/99b7d465-ff65-4b11-b836-532681a6bd29">
+<img align="center" width="1000" alt="" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/">
 
 
 
