@@ -27,37 +27,37 @@
 
 # 📣 Introduction
 ### URL
-> 🖥️ [MVStudio](https://mvstudio.pro) (배포 중단)
+> 🗝️ [AILIBI](https://AILIBI.click) 
 
 ### Medium
-> 🔎 [MVStudio Medium](https://medium.com/@jinoo0306/ai%EA%B0%80-%EB%A7%8C%EB%93%A4%EC%96%B4-%EC%A3%BC%EB%8A%94-%EB%AE%A4%EC%A7%81-%EB%B9%84%EB%94%94%EC%98%A4-%EC%84%9C%EB%B9%84%EC%8A%A4-mvstudio-fc098ae02a08) &nbsp;
+> 🔎 [MVStudio Medium](https://medium.com) &nbsp;
 
 <br>
 
-- **사용자가 선택한 다양한 옵션에 따라 맞춤형 뮤직비디오를 생성**
-- **AI 기술을 활용하여 높은 퀄리티의 뮤직비디오를 신속하게 제작**
-- **장르, 악기, 주제, 분위기를 자유롭게 지정 가능**
-- **사용자 채널 관리 및 차트 기반 분석 제공**
-- **완성된 뮤직비디오를 소셜 미디어에 쉽게 공유**
-- **제작한 뮤직비디오를 개인 프로젝트에 활용 가능**
+- **AI+ALIBl(현재부재증명)=AILIBI**
+- **AI 기반 탐정 시뮬레이션**
+- **1인용 두뇌게임**
+- **사용자가 사건 종류,장소,시간을 입력하면 AI(GPT-4)가 시나리오,용의자,증거를 생성한다**
+- **사용자는 시나리오의 탐정이 되어 용의자를 심문하고 증거를 탐색한다**
+- **진범은 찾아내면 승리한다**
 
 <br>
 
 # 🕺🏻 Demo
-### Onboarding Page
-> MVStudio의 간략한 설명을 담고 있습니다.
+### 로그인 페이지 및 시작 페이지
+> AILIBI 게임에 대한 간략한 설명을 담고 있습니다.
 <img align="center" width="1000" alt="Onboarding" src="https://github.com/2024-Techeer-Summer-Bootcamp-Team-D/.github/blob/main/images/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2024-08-03-%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB-2%20(2).gif">
 
 
 
-### Login & Sign up
+### 시나리오 생성 페이지
 > 구글 소셜 로그인 및 회원가입을 통해 손쉽게 로그인하실 수 있습니다.
 <br>
 <img align="center" width="1000" alt="Login & Sign up" src="https://github.com/user-attachments/assets/a80f83ab-90b0-41bb-8927-143d27dcda51">
 
 <br>
 
-### Main Page
+### 메인 페이지
 > 다른 사람들의 뮤직비디오를 시청할 수 있습니다.<br>
 > 최신순, 조회수순, 급상승, 자신의 국가와 나이대별 인기순으로 목록 조회 할 수 있습니다.
 <br>
@@ -65,14 +65,14 @@
 
 <br>
 
-### Search Music Video
+### 히스토리 페이지
 > 검색 기능을 통해 원하는 뮤직비디오를 쉽게 찾을 수 있습니다.
 <br>
 <img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/dc648d65-0ea9-4dc5-98e5-14f42ec4b256">
 
 <br>
 
-### Create Music Video
+### 시나리오 생성 페이지
 > 사용자는 장르, 악기, 영상 스타일, 제목, 보컬, 언어, 템포를 직접 설정하여 뮤직비디오를 생성할 수 있습니다.<br>
 > 선택한 설정을 바탕으로 제공되는 세 개의 가사 중 원하는 가사를 선택하면 해당 가사로 뮤직비디오가 생성됩니다.
 <br>
@@ -80,7 +80,7 @@
 
 <br>
 
-### Play Music Video
+### 로딩 페이지 및 미니게임 
 > 뮤직비디오를 클릭하면 재생 페이지로 이동하여 시청할 수 있습니다.<br>
 > 이 페이지에서 총 조회수, 만든 사람, 가사를 확인할 수 있으며 시청 도중 나중에 다시 와도 이전에 보던 부분부터 계속 시청할 수 있습니다.
 <br>
@@ -88,7 +88,7 @@
 
 <br>
   
-### My Page
+### 플레이 페이지
 > 사용자는 마이페이지에서 자신이 만든 뮤직비디오와 최근에 시청한 뮤직비디오를 확인할 수 있습니다.<br>
 > 인스타그램과 유튜브 버튼을 통해 자신의 인스타그램과 유튜브 계정으로 바로 이동할 수 있습니다.
 <br>
@@ -96,46 +96,46 @@
 
 <br>
 
-### Analyzing My Channel
+### 용의자 및 증거 페이지
 > 사용자는 자신이 만든 뮤직비디오의 시청 추이를 날짜별 조회수, 성별, 국가별, 연령대별 차트로 분석할 수 있습니다.
 <br>
 <img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/ba0e7494-5eb5-41d6-bcf6-e5cb9e44b8b1">
 
 <br>
 
-### Upload Music Video
+### 채팅 페이지
 > 사용자는 자신의 뮤직비디오를 유튜브에 업로드할 수 있습니다.
 <br>
 <img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/bb63268f-655f-4511-a618-81ec54150e05">
 
 <br>
 
-### Buy Credits
+### 노트 팝업
 > 뮤직비디오 제작에 필요한 크레딧은 카카오페이를 통해 결제할 수 있습니다.
 <br>
 <img align="center" width="1000" alt="" src="https://github.com/user-attachments/assets/99b7d465-ff65-4b11-b836-532681a6bd29">
+
+### 결과 페이지
 
 
 <br>
 
 # 📗 API
- <img align="center" width="1000" alt="charts" src="https://github.com/user-attachments/assets/aef0f280-3a65-40c2-8c32-2f3027465718">
- <img align="center" width="1000" alt="members" src="https://github.com/user-attachments/assets/93f56572-e398-4810-a89b-4869fcae5ccb">
- <img align="center" width="1000" alt="music-videos" src="https://github.com/user-attachments/assets/b4d3b0ca-14c2-4bdb-a63a-50dab395f1fe">
- <img align="center" width="1000" alt="oauth" src="https://github.com/user-attachments/assets/f910a641-c8f5-4d54-8222-98d34a49f806">
+<img width="1503" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/API.png" alt="API 이미지">
+
 
 
 <br><br>
 
 # 🛠 ️System Architecture <a name="-system-architecture"></a>
 <div align="center">
-  <img align="center" width="1000" src="https://github.com/user-attachments/assets/9df3ac9f-c4dc-4805-9561-6482acee8fea">
+  <img align="center" width="1000" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/System.png">
 </div>
 <br><br>
 
 # 🔑 ERD
 <div align="center">
-  <img width="1000" src="https://github.com/user-attachments/assets/55a76355-4840-433f-b721-415387c78a24">
+  <img width="1000" src="https://raw.githubusercontent.com/ksm0520/practice/main/images/ERD.png">
 </div>
 <br><br>
 
