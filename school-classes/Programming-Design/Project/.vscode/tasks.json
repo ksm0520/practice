@@ -15,7 +15,8 @@
         "src/utils.c",
         "-Iinclude",
         "-o",
-        "bin/typingGame.exe"
+        "bin/typingGame.exe",
+        
       ],
       "group": {
         "kind": "build",
