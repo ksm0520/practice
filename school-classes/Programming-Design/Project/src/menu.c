@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <windows.h>
 #include <string.h>
 #include "menu.h"
@@ -49,32 +49,45 @@ void showMainMenu() {
     for (int i = 0; i < boxWidth - 2; i++) printf("═");
     printf("╗\n");
 
-    // 위쪽 빈 줄
-    for (int i = 0; i < topPadding; i++) {
-        for (int j = 0; j < leftPadding; j++) printf(" ");
-        printf("║");
-        for (int j = 0; j < boxWidth - 2; j++) printf(" ");
-        printf("║\n");
+int boxHeight = 30;
+int contentLines = 5;
+int verticalPadding = (boxHeight - contentLines - 2) / 2; // 위·아래 여백
+
+// 위쪽 빈 줄
+for (int i = 0; i < verticalPadding; i++) {
+    for (int j = 0; j < leftPadding; j++) printf(" ");
+    printf("║");
+    for (int j = 0; j < boxWidth - 2; j++) printf(" ");
+    printf("║\n");
+}
+
+// 중앙 내용 출력 (중앙 정렬된 버전)
+for (int l = 0; l < contentLines; l++) {
+    int displayLength = 0;
+    for (int i = 0; lines[l][i] != '\0'; i++) {
+        unsigned char c = lines[l][i];
+        displayLength += (c < 128) ? 1 : 2;
     }
 
-    // 중앙 내용 출력
-    for (int l = 0; l < 5; l++) {
-        int padding = (boxWidth - 2 - 36) / 2; // 내용 너비 감안 (이모지 포함 예상 폭)
-        for (int j = 0; j < leftPadding; j++) printf(" ");
-        printf("║");
-        for (int k = 0; k < padding; k++) printf(" ");
-        printf("%s", lines[l]);
-        for (int k = 0; k < (boxWidth - 2 - padding - strlen(lines[l])); k++) printf(" ");
-        printf("║\n");
-    }
+    int padding = (boxWidth - 2 - displayLength) / 2;
 
-    // 아래쪽 빈 줄
-    for (int i = 0; i < topPadding; i++) {
-        for (int j = 0; j < leftPadding; j++) printf(" ");
-        printf("║");
-        for (int j = 0; j < boxWidth - 2; j++) printf(" ");
-        printf("║\n");
-    }
+    for (int j = 0; j < leftPadding; j++) printf(" ");
+    printf("║");
+    for (int k = 0; k < padding; k++) printf(" ");
+    printf("%s", lines[l]);
+    for (int k = 0; k < boxWidth - 2 - padding - displayLength; k++) printf(" ");
+    printf("║\n");
+}
+
+// 아래쪽 빈 줄
+int remainingLines = boxHeight - contentLines - 2 - verticalPadding;
+for (int i = 0; i < remainingLines; i++) {
+    for (int j = 0; j < leftPadding; j++) printf(" ");
+    printf("║");
+    for (int j = 0; j < boxWidth - 2; j++) printf(" ");
+    printf("║\n");
+}
+
 
     // 하단 테두리
     for (int i = 0; i < leftPadding; i++) printf(" ");
