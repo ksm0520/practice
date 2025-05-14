@@ -42,9 +42,9 @@ int getDisplayWidth(const char *str) {
 }
 
 void showMainMenu() {
-    setConsoleSize(100, 40);
+    setConsoleSize(145, 40);
 
-    const int boxWidth = 60;
+    const int boxWidth = 80;
     const int boxHeight = 30;
     const int contentLines = 5;
 
@@ -54,14 +54,14 @@ void showMainMenu() {
     int topPadding = (consoleHeight - boxHeight) / 2;
 
     char *lines[] = {
-        "\xF0\x9F\x8E\xAE  \xED\x83\x80\xEC\x9E\x90 \xEC\x97\xAC\xEC\x8A\xB5 \xEA\xB2\x8C\xEC\x9E\x84 \xEC\x8B\x9C\xEC\x9E\x91!  \xF0\x9F\x8E\xAE",
-        "1.  \xF0\x9F\x9F\xA2  \xEC\x89\xAC\xEC\x9B\x80",
-        "2.  \xF0\x9F\x9F\xA1  \xEB\xB3\xB4\xED\x86\xB5",
-        "3.  \xF0\x9F\x94\xB4  \xEC\x96\xB4\xEB\xA0\xA4\xEC\x9B\x80",
-        "\xF0\x9F\x91\x89 \xEB\x82\x9C\xEC\x9D\xB4\xEB\x8F\x84\xEB\xA5\xBC \xEC\x84\xA0\xED\x83\x9D\xED\x95\x98\xEC\x84\xB8\xEC\x9A\x94 (1~3):"
+        "🎮  타자 연습 게임 시작!  🎮",
+        "1.  🟢  쉬움",
+        "2.  🟡  보통",
+        "3.  🔴  어려움",
+        "👉 난이도를 선택하세요 (1~3):"
     };
 
-    // 테두리 그리기
+    // Draw box
     gotoxy(leftPadding, topPadding);
     printf("╔");
     for (int i = 0; i < boxWidth - 2; i++) printf("═");
@@ -79,7 +79,7 @@ void showMainMenu() {
     for (int i = 0; i < boxWidth - 2; i++) printf("═");
     printf("╝");
 
-    // 내용 출력
+    // Content display
     int contentStartY = topPadding + 2 + (boxHeight - 2 - contentLines) / 2;
     for (int i = 0; i < contentLines; i++) {
         int w = getDisplayWidth(lines[i]);
@@ -88,19 +88,24 @@ void showMainMenu() {
         printf("%s", lines[i]);
     }
 
-    // 입력 받기
+    // User input prompt
     int mode;
     int promptWidth = getDisplayWidth(lines[4]);
-    gotoxy(leftPadding + (boxWidth - promptWidth) / 2 + promptWidth + 1, contentStartY + 4);
+    int inputX = leftPadding + (boxWidth - promptWidth) / 2 + promptWidth + 1;
+    int inputY = contentStartY + 4;
+    gotoxy(inputX, inputY);
     scanf("%d", &mode);
     clearBuffer();
 
-    // 박스 안 메뉴 내용 지우기
+    // Clear content area
     for (int i = contentStartY; i < contentStartY + contentLines; i++) {
         gotoxy(leftPadding + 1, i);
         for (int j = 0; j < boxWidth - 2; j++) printf(" ");
     }
 
-    // 타자 게임 시작
+    // Call typing game from same centered box
+    int typingX = leftPadding + (boxWidth - 40) / 2;
+    int typingY = topPadding + boxHeight / 2;
+    gotoxy(typingX, typingY);
     startTypingGame(mode);
 }
