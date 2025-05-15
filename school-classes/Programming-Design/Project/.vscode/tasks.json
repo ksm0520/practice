@@ -1,48 +1,67 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "build typing game",
-      "type": "shell",
-      "command": "gcc",
-      "args": [
-        "src/main.c",
-        "src/menu.c",
-        "src/sentence.c",
-        "src/typing.c",
-        "src/score.c",
-        "src/storage.c",
-        "src/utils.c",
-        "-Iinclude",
-        "-o",
-        "bin/typingGame.exe",
-        
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "run typing game",
-      "type": "shell",
-      "command": "cmd",
-      "args": [
-        "/c",
-        "chcp 65001 && .\\bin\\typingGame.exe"
-      ],
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new"
-      },
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-typing-game",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "src/main.c",
+                "src/menu.c",
+                "src/sentence.c",
+                "src/typing.c",
+                "src/score.c",
+                "src/storage.c",
+                "src/utils.c",
+                "-Iinclude",
+                "-o",
+                "bin/typingGame.exe"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "run typing game",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "chcp 65001 && .\\bin\\typingGame.exe"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe 활성 파일 빌드",
+            "command": "C:\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "디버거에서 생성된 작업입니다."
+        }
+    ]
 }
