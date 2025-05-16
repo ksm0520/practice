@@ -2,8 +2,9 @@
 #define MENU_H
 
 void showMainMenu();
-void startMatrixEffect(int durationMs);
+void startMatrixIntro();
+void drawBackgroundPattern(int width, int height);
+void printLogo();
 
-int getConsoleWidth();     
-int getConsoleHeight(); 
+
 #endif
