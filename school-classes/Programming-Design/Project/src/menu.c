@@ -7,6 +7,10 @@
 #include "typing.h"
 #include "utils.h"
 
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_ENTER 13
+
 // 콘솔 커서 이동
 void gotoxy(int x, int y) {
     COORD pos = { (SHORT)x, (SHORT)y };
@@ -135,89 +139,90 @@ void printLogo() {
 }
 
 
-
-
-
 // 메인 메뉴
-    void showMainMenu() {
-        setConsoleSize(145, 40);
-        printLogo();
-        startMatrixEffect(2000);
+void showMainMenu() {
+    setConsoleSize(145, 40);
+    printLogo();
+    startMatrixEffect(2000);
 
-        int consoleWidth = getConsoleWidth();
-        int consoleHeight = getConsoleHeight();
-        drawBackgroundPattern(consoleWidth, consoleHeight);
+    int consoleWidth = getConsoleWidth();
+    int consoleHeight = getConsoleHeight();
+    drawBackgroundPattern(consoleWidth, consoleHeight);
 
-        const int boxWidth = 80;
-        const int boxHeight = 30;
-        const int contentLines = 5;
-        int leftPadding = (consoleWidth - boxWidth) / 2;
-        int topPadding = (consoleHeight - boxHeight) / 2;
+    const int boxWidth = 80;
+    const int boxHeight = 30;
+    int leftPadding = (consoleWidth - boxWidth) / 2;
+    int topPadding = (consoleHeight - boxHeight) / 2;
 
-        char *lines[] = {
-            "🎮  타자 연습 게임 시작!  🎮",
-            "1.  🟢  쉬움",
-            "2.  🟡  보통",
-            "3.  🔴  어려움",
-            "👉 난이도를 선택하세요 (1~3):"
-        };
-
-        // 박스 그리기
-        gotoxy(leftPadding, topPadding); printf("╔");
-        for (int i = 0; i < boxWidth - 2; i++) printf("═");
-        printf("╗");
-
-        for (int i = 1; i < boxHeight - 1; i++) {
-            gotoxy(leftPadding, topPadding + i); printf("║");
-            for (int j = 0; j < boxWidth - 2; j++) printf(" ");
-            printf("║");
-        }
-
-        gotoxy(leftPadding, topPadding + boxHeight - 1); printf("╚");
-        for (int i = 0; i < boxWidth - 2; i++) printf("═");
-        printf("╝");
-
-        // 2. 사용자 이름 입력
-        // 2. 사용자 이름 입력
-        char username[50];
-        int nameInputY = topPadding + 3;
-        int nameInputX = leftPadding + 36;
-
-        gotoxy(leftPadding + 4, nameInputY);
-        printf("👤 사용자 이름을 입력하세요: ");
-        gotoxy(nameInputX, nameInputY);
-        scanf("%s", username);
-        clearBuffer();
-
-
-        // 내용 출력
-        int contentStartY = topPadding + 2 + (boxHeight - 2 - contentLines) / 2;
-        for (int i = 0; i < contentLines; i++) {
-            int w = getDisplayWidth(lines[i]);
-            int x = leftPadding + (boxWidth - w) / 2;
-            gotoxy(x, contentStartY + i);
-            printf("%s", lines[i]);
-        }
-
-        // 입력 받기
-        int mode;
-        int promptWidth = getDisplayWidth(lines[4]);
-        int inputX = leftPadding + (boxWidth - promptWidth) / 2 + promptWidth + 1;
-        int inputY = contentStartY + 4;
-        gotoxy(inputX, inputY);
-        scanf("%d", &mode);
-        clearBuffer();
-
-        for (int i = topPadding + 1; i < topPadding + boxHeight - 1; i++) {
-        gotoxy(leftPadding + 1, i);
-        for (int j = 0; j < boxWidth - 2; j++) {
-        printf(" ");
-        }
-        }
-
-        // 게임 시작 위치
-        int typingX = leftPadding + (boxWidth - 40) / 2;
-        int typingY = topPadding + boxHeight / 2;
-        gotoxy(typingX, typingY);
-        startTypingGame(mode);
+    // 박스 그리기
+    gotoxy(leftPadding, topPadding); printf("╔");
+    for (int i = 0; i < boxWidth - 2; i++) printf("═");
+    printf("╗");
+    for (int i = 1; i < boxHeight - 1; i++) {
+        gotoxy(leftPadding, topPadding + i); printf("║");
+        for (int j = 0; j < boxWidth - 2; j++) printf(" ");
+        printf("║");
     }
+    gotoxy(leftPadding, topPadding + boxHeight - 1); printf("╚");
+    for (int i = 0; i < boxWidth - 2; i++) printf("═");
+    printf("╝");
+
+    // 사용자 이름 입력
+    char username[50];
+    int nameInputY = topPadding + 3;
+    int nameInputX = leftPadding + 36;
+    gotoxy(leftPadding + 4, nameInputY);
+    printf("👤 사용자 이름을 입력하세요: ");
+    gotoxy(nameInputX, nameInputY);
+    scanf("%s", username);
+    clearBuffer();
+
+    // 텍스트 및 옵션 출력
+    int baseX = leftPadding + (boxWidth / 2) - 30; // 오른쪽으로  이동
+    int baseY = topPadding + 10;
+
+    char* difficultyLabels[] = {
+        "1.  🟢  쉬움",
+        "2.  🟡  보통",
+        "3.  🔴  어려움"
+    };
+    int selected = 0;
+    int numOptions = 3;
+
+    while (1) {
+        gotoxy(leftPadding + 20, baseY - 2);
+        printf("      🎮  타자 연습 게임 시작!  🎮");
+
+        for (int i = 0; i < numOptions; i++) {  
+            gotoxy(baseX, baseY + i * 3);
+            if (i == selected) {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A); // 초록
+                printf("👉 %s", difficultyLabels[i]);
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x07); // 기본
+            } else {
+                printf("   %s", difficultyLabels[i]);
+            }
+        }
+
+        int ch = _getch();
+        if (ch == 224) {
+            ch = _getch();
+            if (ch == 72) selected = (selected - 1 + numOptions) % numOptions; // ↑
+            else if (ch == 80) selected = (selected + 1) % numOptions;         // ↓
+        } else if (ch == '\r') {
+            break; // Enter 입력 시 종료
+        }
+    }
+
+    // 선택 후 박스 내부 지우기
+    for (int i = topPadding + 1; i < topPadding + boxHeight - 1; i++) {
+        gotoxy(leftPadding + 1, i);
+        for (int j = 0; j < boxWidth - 2; j++) printf(" ");
+    }
+
+    // 게임 시작 위치
+    int typingX = leftPadding + (boxWidth - 40) / 2;
+    int typingY = topPadding + boxHeight / 2;
+    gotoxy(typingX, typingY);
+    startTypingGame(selected + 1); // 1~3
+}
