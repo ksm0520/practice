@@ -9,6 +9,8 @@
 
 #define KEY_UP 72
 #define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 #define KEY_ENTER 13
 
 // 콘솔 커서 이동
@@ -172,45 +174,61 @@ void showMainMenu() {
     int nameInputY = topPadding + 3;
     int nameInputX = leftPadding + 36;
     gotoxy(leftPadding + 4, nameInputY);
-    printf("👤 사용자 이름을 입력하세요: ");
+    printf("👤 사용자 이름: ");
     gotoxy(nameInputX, nameInputY);
     scanf("%s", username);
     clearBuffer();
 
-    // 텍스트 및 옵션 출력
-    int baseX = leftPadding + (boxWidth / 2) - 30; // 오른쪽으로  이동
-    int baseY = topPadding + 10;
-
+    // 3x5 항목 구성
     char* difficultyLabels[] = {
-        "1.  🟢  쉬움",
-        "2.  🟡  보통",
-        "3.  🔴  어려움"
+        "easy", "normal", "hard",
+        "song1", "song2", "song3",
+        "song4", "song5", "song6",
+        "code1", "code2", "code3",
+        "code4", "code5", "code6"
     };
     int selected = 0;
-    int numOptions = 3;
+    int numOptions = 15;
+    int numCols = 3;
+    int numRows = 5;
 
+    int baseX = leftPadding + 13;  // 좌우 위치
+    int baseY = topPadding + 10;    // 위쪽 위치
+
+    // 선택 루프
     while (1) {
-        gotoxy(leftPadding + 20, baseY - 2);
-        printf("      🎮  타자 연습 게임 시작!  🎮");
+        // 타이틀 출력
+        gotoxy(leftPadding + (boxWidth - 28) / 2, baseY - 2);
+        printf("🎮  영타자 연습 시작!!!  🎮");
 
-        for (int i = 0; i < numOptions; i++) {  
-            gotoxy(baseX, baseY + i * 3);
-            if (i == selected) {
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A); // 초록
+        // 옵션 출력
+        for (int i = 0; i < numOptions; i++) {
+            int row = i / numCols;
+            int col = i % numCols;
+            int x = baseX + col * 20;  // 열 간격
+            int y = baseY + row * 3;   // 행 간격
+
+            gotoxy(x, y);
+            if (i == selected)
                 printf("👉 %s", difficultyLabels[i]);
-                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x07); // 기본
-            } else {
+            else
                 printf("   %s", difficultyLabels[i]);
-            }
         }
 
-        int ch = _getch();
-        if (ch == 224) {
-            ch = _getch();
-            if (ch == 72) selected = (selected - 1 + numOptions) % numOptions; // ↑
-            else if (ch == 80) selected = (selected + 1) % numOptions;         // ↓
-        } else if (ch == '\r') {
-            break; // Enter 입력 시 종료
+        // 안내 문구
+        gotoxy(leftPadding + (boxWidth - 28) / 2, baseY + numRows * 2 + 6);
+        printf("↑↓←→ 이동, Enter로 선택");
+
+        // 입력 처리
+        int key = getch();
+        if (key == 224 || key == 0) {
+            key = getch();
+            if (key == KEY_UP && selected - numCols >= 0) selected -= numCols;
+            else if (key == KEY_DOWN && selected + numCols < numOptions) selected += numCols;
+            else if (key == KEY_LEFT && selected % numCols > 0) selected -= 1;
+            else if (key == KEY_RIGHT && selected % numCols < numCols - 1) selected += 1;
+        } else if (key == KEY_ENTER) {
+            break;
         }
     }
 
@@ -220,9 +238,6 @@ void showMainMenu() {
         for (int j = 0; j < boxWidth - 2; j++) printf(" ");
     }
 
-    // 게임 시작 위치
-    int typingX = leftPadding + (boxWidth - 40) / 2;
-    int typingY = topPadding + boxHeight / 2;
-    gotoxy(typingX, typingY);
-    startTypingGame(selected + 1); // 1~3
+    // 게임 시작 (위치는 나중에 타이핑 파트에서 재지정하면 됨)
+    startTypingGame(selected + 1);  // 선택된 인덱스 (1~15)
 }
