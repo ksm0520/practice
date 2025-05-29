@@ -6,12 +6,15 @@
 #include "menu.h"
 #include "typing.h"
 #include "utils.h"
+#include "storage.h"
 
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
+
+char username[50];  // 전역 변수로 이동
 
 // 콘솔 커서 이동
 void gotoxy(int x, int y) {
@@ -141,11 +144,14 @@ void printLogo() {
 }
 
 
-// 메인 메뉴
-void showMainMenu() {
+
+void showMainMenu(int isRestart) {
     setConsoleSize(145, 40);
-    printLogo();
-    startMatrixEffect(2000);
+
+    if (!isRestart) {
+        printLogo();               // 1. 로고
+        startMatrixEffect(2000);   // 2. 매트릭스 효과
+    }
 
     int consoleWidth = getConsoleWidth();
     int consoleHeight = getConsoleHeight();
@@ -156,7 +162,7 @@ void showMainMenu() {
     int leftPadding = (consoleWidth - boxWidth) / 2;
     int topPadding = (consoleHeight - boxHeight) / 2;
 
-    // 박스 그리기
+    // 3. 박스 그리기
     gotoxy(leftPadding, topPadding); printf("╔");
     for (int i = 0; i < boxWidth - 2; i++) printf("═");
     printf("╗");
@@ -169,17 +175,28 @@ void showMainMenu() {
     for (int i = 0; i < boxWidth - 2; i++) printf("═");
     printf("╝");
 
-    // 사용자 이름 입력
-    char username[50];
+    // 4. 사용자 이름 입력 (처음 실행 시에만)
     int nameInputY = topPadding + 3;
     int nameInputX = leftPadding + 36;
-    gotoxy(leftPadding + 4, nameInputY);
-    printf("👤 사용자 이름: ");
-    gotoxy(nameInputX, nameInputY);
-    scanf("%s", username);
-    clearBuffer();
+    if (!isRestart) {
+        gotoxy(leftPadding + 4, nameInputY);
+        printf("👤 사용자 이름: ");
+        gotoxy(nameInputX, nameInputY);
+        scanf("%s", username);
+        clearBuffer();
+    }
+    
 
-    // 3x5 항목 구성
+    // 5. 사용자 이름 및 최고 점수 표시
+    else {
+    gotoxy(leftPadding + 4, nameInputY);
+    printf("👤 사용자 이름: %s", username);
+    }
+    gotoxy(leftPadding + 4, nameInputY + 1);
+    printf("🏆 최고 점수: ");
+    // showHighScore();  // 구현되면 주석 해제
+
+    // 6. 모드 선택 메뉴 출력
     char* difficultyLabels[] = {
         "easy", "normal", "hard",
         "song1", "song2", "song3",
@@ -192,21 +209,18 @@ void showMainMenu() {
     int numCols = 3;
     int numRows = 5;
 
-    int baseX = leftPadding + 13;  // 좌우 위치
-    int baseY = topPadding + 10;    // 위쪽 위치
+    int baseX = leftPadding + 13;
+    int baseY = topPadding + 10;
 
-    // 선택 루프
     while (1) {
-        // 타이틀 출력
         gotoxy(leftPadding + (boxWidth - 28) / 2, baseY - 2);
         printf("🎮  영타자 연습 시작!!!  🎮");
 
-        // 옵션 출력
         for (int i = 0; i < numOptions; i++) {
             int row = i / numCols;
             int col = i % numCols;
-            int x = baseX + col * 20;  // 열 간격
-            int y = baseY + row * 3;   // 행 간격
+            int x = baseX + col * 20;
+            int y = baseY + row * 3;
 
             gotoxy(x, y);
             if (i == selected)
@@ -215,11 +229,9 @@ void showMainMenu() {
                 printf("   %s", difficultyLabels[i]);
         }
 
-        // 안내 문구
         gotoxy(leftPadding + (boxWidth - 28) / 2, baseY + numRows * 2 + 6);
         printf("↑↓←→ 이동, Enter로 선택");
 
-        // 입력 처리
         int key = getch();
         if (key == 224 || key == 0) {
             key = getch();
@@ -238,6 +250,6 @@ void showMainMenu() {
         for (int j = 0; j < boxWidth - 2; j++) printf(" ");
     }
 
-    // 게임 시작 (위치는 나중에 타이핑 파트에서 재지정하면 됨)
-    startTypingGame(selected + 1);  // 선택된 인덱스 (1~15)
+    // 게임 시작 (선택된 인덱스는 1~15로 전달)
+    startTypingGame(selected + 1);
 }
