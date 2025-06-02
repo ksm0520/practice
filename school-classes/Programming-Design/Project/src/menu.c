@@ -32,6 +32,11 @@ void setConsoleSize(int width, int height) {
     char command[100];
     sprintf(command, "mode con: cols=%d lines=%d", width, height);
     system(command);
+
+     // 추가로 창 크기도 설정
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SMALL_RECT rect = { 0, 0, width - 1, height - 1 };
+    SetConsoleWindowInfo(hOut, TRUE, &rect);
 }
 
 // 콘솔 너비
@@ -89,7 +94,7 @@ void startMatrixEffect(int durationMs) {
 void drawBackgroundPattern(int width, int height) {
     char charset[] = { '/', '\\', '|', '-', ':' };
     int charsetSize = sizeof(charset) / sizeof(char);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x08);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x08);  // 회색
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -99,8 +104,10 @@ void drawBackgroundPattern(int width, int height) {
         }
     }
 
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A); // 다시 연두색
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A);  // 연두색 
 }
+
+
 
 // GAME + KeyRush 로고 출력
 void printLogo() {
@@ -109,15 +116,15 @@ void printLogo() {
     int h = getConsoleHeight();
 
     const char* lines[] = {
-        "                               ██████╗  █████╗ ███╗   ███╗███████╗",
-        "                              ██╔════╝ ██╔══██╗████╗ ████║██╔════╝",
-        "                              ██║  ███╗███████║██╔████╔██║█████╗  ",
-        "                              ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ",
-        "                              ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗",
-        "                               ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝",
+        "                                    ██████╗  █████╗ ███╗   ███╗███████╗",
+        "                                   ██╔════╝ ██╔══██╗████╗ ████║██╔════╝",
+        "                                   ██║  ███╗███████║██╔████╔██║█████╗  ",
+        "                                   ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ",
+        "                                   ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗",
+        "                                    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝",
         "","","",
-        "                                            - KeyRush -           ",
-        "                                   Press any key to continue...    "
+        "                                                 - KeyRush -           ",
+        "                                        Press any key to continue...    "
     };
 
     int totalLines = sizeof(lines) / sizeof(lines[0]);
@@ -146,7 +153,7 @@ void printLogo() {
 
 
 void showMainMenu(int isRestart) {
-    setConsoleSize(145, 40);
+    setConsoleSize(146, 41);
 
     if (!isRestart) {
         printLogo();               // 1. 로고
@@ -193,8 +200,8 @@ void showMainMenu(int isRestart) {
     printf("👤 사용자 이름: %s", username);
     }
     gotoxy(leftPadding + 4, nameInputY + 1);
-    printf("🏆 최고 점수: ");
-    // showHighScore();  // 구현되면 주석 해제
+    printf("🎯 최고 타율: ");
+    // showHighAccuracy();  // 구현되면 주석 해제
 
     // 6. 모드 선택 메뉴 출력
     char* difficultyLabels[] = {
@@ -251,5 +258,5 @@ void showMainMenu(int isRestart) {
     }
 
     // 게임 시작 (선택된 인덱스는 1~15로 전달)
-    startTypingGame(selected + 1);
+    startTypingGame(username, selected + 1);
 }

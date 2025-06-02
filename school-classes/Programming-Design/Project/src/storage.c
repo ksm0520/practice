@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "storage.h"
 
-void saveScore(int score) {
+void saveScore(const char* username, int score) {
     FILE *fp = fopen("score.txt", "a");
     if (fp == NULL) return;
     fprintf(fp, "Score: %d\n", score);

@@ -1,6 +1,6 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
-void saveScore(int score);
+void saveScore(const char* username, int score);
 
 #endif
