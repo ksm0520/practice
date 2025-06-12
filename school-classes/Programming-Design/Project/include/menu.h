@@ -3,9 +3,8 @@
 
 void showMainMenu(int isRestart);
 void startMatrixEffect(int durationMs);
-void gotoxy(int x, int y);
-void setConsoleSize(int width, int height);  
-void printLogo();                            
+void setConsoleSize(int width, int height);
+void printLogo();
 
 extern char username[50];  // 사용자 이름 전역
 #endif

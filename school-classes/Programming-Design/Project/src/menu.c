@@ -14,13 +14,9 @@
 #define KEY_RIGHT 77
 #define KEY_ENTER 13
 
-char username[50];  // 전역 변수로 이동
+// char username[50];  // 여기서 정의하는 대신 main.c에서 정의합니다.
+extern char username[50]; // main.c에 정의된 username을 사용하겠다고 선언합니다.
 
-// 콘솔 커서 이동
-void gotoxy(int x, int y) {
-    COORD pos = { (SHORT)x, (SHORT)y };
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-}
 
 // 좌표 범위 검사용 함수
 BOOL isInRect(int x, int y, int left, int top, int right, int bottom) {
@@ -32,11 +28,6 @@ void setConsoleSize(int width, int height) {
     char command[100];
     sprintf(command, "mode con: cols=%d lines=%d", width, height);
     system(command);
-
-     // 추가로 창 크기도 설정
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    SMALL_RECT rect = { 0, 0, width - 1, height - 1 };
-    SetConsoleWindowInfo(hOut, TRUE, &rect);
 }
 
 // 콘솔 너비
@@ -54,7 +45,7 @@ int getConsoleHeight() {
 }
 
 // 문자열 출력 폭 계산
-int getDisplayWidth(const char *str) {
+int getDisplayWidth(const char* str) {
     int width = 0;
     for (int i = 0; str[i];) {
         unsigned char c = str[i];
@@ -71,7 +62,7 @@ void startMatrixEffect(int durationMs) {
     srand((unsigned int)time(NULL));
     int width = getConsoleWidth();
     int height = getConsoleHeight();
-    int *drops = (int *)malloc(sizeof(int) * width);
+    int* drops = (int*)malloc(sizeof(int) * width);
 
     for (int i = 0; i < width; i++) drops[i] = rand() % height;
     DWORD start = GetTickCount();
@@ -94,7 +85,7 @@ void startMatrixEffect(int durationMs) {
 void drawBackgroundPattern(int width, int height) {
     char charset[] = { '/', '\\', '|', '-', ':' };
     int charsetSize = sizeof(charset) / sizeof(char);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x08);  // 회색
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x08);
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -104,56 +95,65 @@ void drawBackgroundPattern(int width, int height) {
         }
     }
 
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A);  // 연두색 
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A); // 다시 연두색
 }
 
-
-
-// GAME + KeyRush 로고 출력
+// GAME + KeyRush 로고출력
 void printLogo() {
+    setConsoleSize(145, 40);
     system("cls");
+
     int w = getConsoleWidth();
     int h = getConsoleHeight();
 
-    const char* lines[] = {
-        "                                    ██████╗  █████╗ ███╗   ███╗███████╗",
-        "                                   ██╔════╝ ██╔══██╗████╗ ████║██╔════╝",
-        "                                   ██║  ███╗███████║██╔████╔██║█████╗  ",
-        "                                   ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ",
-        "                                   ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗",
-        "                                    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝",
-        "","","",
-        "                                                 - KeyRush -           ",
-        "                                        Press any key to continue...    "
+    const char* logoLines[] = {
+        "                                   ██╗  ██╗███████╗██╗   ██╗    ██████╗ ██╗   ██╗███████╗██╗  ██╗",
+        "                                   ██║ ██╔╝██╔════╝╚██╗ ██╔╝    ██╔══██╗██║   ██║██╔════╝██║  ██║",
+        "                                   █████╔╝ █████╗   ╚████╔╝     ██████╔╝██║   ██║███████╗███████║",
+        "                                   ██╔═██╗ ██╔══╝    ╚██╔╝      ██╔══██╗██║   ██║╚════██║██╔══██║",
+        "                                   ██║  ██╗███████╗   ██║       ██║  ██║╚██████╔╝███████║██║  ██║",
+        "                                   ╚═╝  ╚═╝╚══════╝   ╚═╝       ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝"
     };
+    int totalLogoLines = sizeof(logoLines) / sizeof(logoLines[0]);
+    int baseY = h / 2 - totalLogoLines / 2;
+    int offsetY = 0;
+    int direction = 1;
 
-    int totalLines = sizeof(lines) / sizeof(lines[0]);
+    const char* msg1 = "- English typing program -";
+    const char* msg2 = "Press any key to continue...";
 
-    // 가장 긴 줄의 길이 계산
-    int maxLen = 0;
-    for (int i = 0; i < totalLines; i++) {
-        int len = getDisplayWidth(lines[i]);
-        if (len > maxLen) maxLen = len;
+    while (!_kbhit()) {  // 키 누를 때까지 계속 흔들기
+        system("cls");
+
+        // 로고 흔들리는 위치
+        for (int i = 0; i < totalLogoLines; i++) {
+            gotoxy(0, baseY + offsetY + i);
+            printf("%s", logoLines[i]);
+        }
+
+        // 고정 위치 텍스트 (중앙 정렬)
+        int x1 = (w - getDisplayWidth(msg1)) / 2;
+        int x2 = (w - getDisplayWidth(msg2)) / 2;
+        gotoxy(x1, baseY + totalLogoLines + 11);
+        printf("%s", msg1);
+        gotoxy(x2, baseY + totalLogoLines + 14);
+        printf("%s", msg2);
+
+        Sleep(300);  // 흔들림 속도
+
+        offsetY += direction;
+        if (offsetY > 1 || offsetY < 0)  // 0 ↔ 1만 반복
+            direction *= -1;
     }
 
-    int startY = h / 2 - totalLines / 2;
-
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0A);  // 연두색
-
-    for (int i = 0; i < totalLines; i++) {
-        int x = (w - maxLen) / 2;
-        gotoxy(x, startY + i);
-        printf("%s", lines[i]);
-    }
-
-    _getch();
-    system("cls");
+    _getch();  // 입력 소비하고 빠져나가기
 }
 
 
 
 void showMainMenu(int isRestart) {
-    setConsoleSize(146, 41);
+    setConsoleSize(145, 40);
+
 
     if (!isRestart) {
         printLogo();               // 1. 로고
@@ -192,16 +192,15 @@ void showMainMenu(int isRestart) {
         scanf("%s", username);
         clearBuffer();
     }
-    
 
-    // 5. 사용자 이름 및 최고 점수 표시
+
+    // 5. 사용자 이름 및 최고 타수 표시
     else {
-    gotoxy(leftPadding + 4, nameInputY);
-    printf("👤 사용자 이름: %s", username);
+        gotoxy(leftPadding + 4, nameInputY);
+        printf("👤 사용자 이름: %s", username);
     }
-    gotoxy(leftPadding + 4, nameInputY + 1);
-    printf("🎯 최고 타율: ");
-    // showHighAccuracy();  // 구현되면 주석 해제
+    gotoxy(leftPadding + 4, nameInputY + 1); // 최고 타수 표시 위치
+    showHighScore(); // 최고 타수 출력 함수 호출
 
     // 6. 모드 선택 메뉴 출력
     char* difficultyLabels[] = {
@@ -236,18 +235,25 @@ void showMainMenu(int isRestart) {
                 printf("   %s", difficultyLabels[i]);
         }
 
-        gotoxy(leftPadding + (boxWidth - 28) / 2, baseY + numRows * 2 + 6);
-        printf("↑↓←→ 이동, Enter로 선택");
+        gotoxy(leftPadding + (boxWidth - 28) / 2 -2, baseY + numRows * 2 + 6);
+        printf("↑↓←→ 이동, Enter로 선택 q로 종료");
 
-        int key = getch();
+        int key = _getch();
+        // 방향키 입력 처리
         if (key == 224 || key == 0) {
-            key = getch();
+            key = _getch();
             if (key == KEY_UP && selected - numCols >= 0) selected -= numCols;
             else if (key == KEY_DOWN && selected + numCols < numOptions) selected += numCols;
             else if (key == KEY_LEFT && selected % numCols > 0) selected -= 1;
             else if (key == KEY_RIGHT && selected % numCols < numCols - 1) selected += 1;
-        } else if (key == KEY_ENTER) {
-            break;
+        }
+        else if (key == KEY_ENTER) {
+            break;  // 게임 시작
+        }
+        else if (key == 'q' || key == 'Q') {
+            system("cls");
+            printf("\n프로그램을 종료합니다...\n");
+            exit(0);  // 즉시 종료
         }
     }
 
@@ -258,5 +264,5 @@ void showMainMenu(int isRestart) {
     }
 
     // 게임 시작 (선택된 인덱스는 1~15로 전달)
-    startTypingGame(username, selected + 1);
+    startTypingGame(selected + 1);
 }

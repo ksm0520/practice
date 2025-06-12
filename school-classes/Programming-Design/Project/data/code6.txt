@@ -1,0 +1,17 @@
+#include <stdio.h>
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int mul(int a, int b) { return a * b; }
+float div(int a, int b) { return b != 0 ? (float)a / b : 0; }
+int main()
+int x, y;
+char op;
+printf("계산식 입력 (예: 3 + 4): ");
+scanf("%d %c %d", &x, &op, &y);
+switch (op)
+case '+': printf("결과: %d\n", add(x, y)); break;
+case '-': printf("결과: %d\n", sub(x, y)); break;
+case '*': printf("결과: %d\n", mul(x, y)); break;
+case '/': printf("결과: %.2f\n", div(x, y)); break;
+default: printf("올바르지 않은 연산자입니다.\n");
+return 0;

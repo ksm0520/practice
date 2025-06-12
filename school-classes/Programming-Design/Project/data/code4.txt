@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+int scores[5];
+int sum = 0;
+for (int i = 0; i < 5; i++)
+printf("%d번째 점수 입력: ", i + 1);
+scanf("%d", &scores[i]);
+sum += scores[i];
+printf("평균: %.2f\n", sum / 5.0);
+return 0;
