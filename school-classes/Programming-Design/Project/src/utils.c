@@ -15,3 +15,8 @@ void enforceExactConsoleSize() {
     SMALL_RECT rect = { 0, 0, 145, 40 }; // width-1, height-1
     SetConsoleWindowInfo(hOut, TRUE, &rect);
 }
+
+void gotoxy(int x, int y) {
+    COORD pos = { (SHORT)x, (SHORT)y };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}

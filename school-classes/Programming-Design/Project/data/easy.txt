@@ -1,3 +1,30 @@
-Hello
-Good job
-Nice to meet you
+apple
+banana
+dog
+cat
+happy
+book
+chair
+table
+water
+pen
+pencil
+car
+tree
+sun
+moon
+ball
+milk
+bread
+cake
+phone
+star
+key
+door
+bird
+blue
+red
+green
+love
+fish
+train

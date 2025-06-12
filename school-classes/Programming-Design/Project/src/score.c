@@ -1,10 +1,17 @@
 #include <string.h>
 #include "score.h"
 
-int calculateScore(const char *original, const char *input) {
+int calculateScore(const char* original, const char* input) {
     int correct = 0;
-    for (int i = 0; original[i] != '\0' && input[i] != '\0'; i++) {
-        if (original[i] == input[i]) correct++;
+    int lenOriginal = strlen(original);
+    int lenInput = strlen(input);
+    int total = (lenOriginal > lenInput) ? lenOriginal : lenInput;
+
+    for (int i = 0; i < total; i++) {
+        char a = (i < lenOriginal) ? original[i] : '\0';
+        char b = (i < lenInput) ? input[i] : '\0';
+        if (a == b) correct++;
     }
-    return (correct * 100) / strlen(original);
+
+    return (correct * 100) / total;
 }

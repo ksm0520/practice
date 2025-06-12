@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "sentence.h": "c"
+        "sentence.h": "c",
+        "windows.h": "c"
     }
 }

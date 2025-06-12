@@ -2,6 +2,8 @@
 #include "menu.h"
 #include "utils.h"
 
+char username[50]; // 여기서 username을 정의합니다.
+
 int main() {
     setConsoleSize(145, 40); // 초기 콘솔 설정
 

@@ -1,3 +1,29 @@
-Programming in C is fun
-Practice makes perfect
-I like learning new things
+I love pizza.
+Open the door.
+Close the window.
+It is raining.
+She is happy.
+I have a dog.
+We are friends.
+This is a pen.
+He runs fast.
+Don't be late.
+Time is money.
+It's very cold.
+Turn off the light.
+Give me a book.
+I like music.
+This is easy.
+Let's go now.
+It is sunny.
+You are right.
+Come with me.
+It's over there.
+Do your best.
+Be on time.
+Take a rest.
+Please sit down.
+Have a nice day.
+Wake up early.
+I am so tired.
+Look at that.

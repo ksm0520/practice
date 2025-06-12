@@ -3,5 +3,6 @@
 
 void clearBuffer();
 void enforceExactConsoleSize();
+void gotoxy(int x, int y);  
 
 #endif
